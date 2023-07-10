@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: hsl(40, 100%, 95%);
+  --bg-1: hsl(40, 75%, 90%);
+  --bg-2: hsl(40, 75%, 80%);
+  --bg-3: hsl(40, 75%, 70%);
+  --bg-4: hsl(40, 75%, 60%);
+  --bg-5: hsl(40, 75%, 50%);
+
+  --dark: hsl(40, 75%, 25%);
+
+  --primary: hsl(40, 75%, 50%);
+}
+
+body {
+  font-family: sans-serif;
+  background-color: var(--bg);
+  font-size: 20px;
+}
