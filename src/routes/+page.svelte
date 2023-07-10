@@ -7,7 +7,7 @@
 
 <UiFormCari />
 
-<UiMenu />
+<!-- <UiMenu /> -->
 
 <style>
   h1 {
