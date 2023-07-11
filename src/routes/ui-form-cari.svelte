@@ -1,27 +1,37 @@
 <script>
   let nik;
   let error;
+  let errMessage;
+  $: nikLength = (nik && nik.toString().length) || "";
 
   function validated() {
-    error = undefined;
-    if (nik && isNaN(nik)) error = "Harus diisi nomor!";
-    if (nik.length != 16) error += "<br/> Jumlah harus NIK 16 nomor!";
+    if (nikLength != 16) {
+      error = true;
+      errMessage = "Jumlah harus NIK 16 nomor!";
+    }
+
+    if (nikLength == 16) {
+      error = false;
+      errMessage = "OK";
+    }
   }
 </script>
 
 <section>
   <h2>Cari data pensiunan</h2>
-  <form method="get" action="/cari/{nik}">
+  <p>Masukkan NIK KTP Pensiunan</p>
+  <form method="get" action="/cari/{nik}" class:error>
     <input
-      type="search"
+      type="number"
       title="Masukkan NIK KTP"
       bind:value={nik}
-      placeholder="Masukkan NIK KTP"
+      placeholder="NIK KTP"
       on:keyup={validated}
     />
-    <button type="submit" disabled={error}>Cari</button>
+    <button type="submit" disabled={error || !nik}>Cari</button>
   </form>
-  <small class:error>{@html error ?? "Masukkan NIK KTP Pensiunan"}</small>
+  <div class:error>{(nik && error && `Jumlah : ${nikLength}`) || ""}</div>
+  <div class:error>{errMessage ?? ""}</div>
 </section>
 
 <style>
@@ -36,6 +46,14 @@
     overflow: hidden;
     border: 2px solid var(--bg-3);
     margin: 0.5rem 0;
+  }
+
+  form.error {
+    border-color: red;
+  }
+
+  div.error {
+    color: red;
   }
 
   input {
@@ -66,9 +84,5 @@
   button:disabled {
     opacity: 0.6;
     color: var(--bg-4);
-  }
-
-  small.error {
-    color: red;
   }
 </style>

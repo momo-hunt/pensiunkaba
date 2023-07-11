@@ -22,10 +22,10 @@
   {/if}
 {:catch error}
   <pre>
-          <code>
-              {JSON.stringify({ error }, null, 2)}
-          </code>
-      </pre>
+    <code>
+      {JSON.stringify({ error }, null, 2)}
+    </code>
+  </pre>
 {/await}
 
 <style>
