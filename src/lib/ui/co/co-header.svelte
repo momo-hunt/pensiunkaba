@@ -1,10 +1,14 @@
 <header>
-  <a href="./">Kembali</a>
+  <a href="./">
+    <span class="material-symbols-outlined"> arrow_back </span>
+    Kembali
+  </a>
 </header>
 
 <style>
   header a {
-    display: block;
+    display: inline-flex;
     padding: 1rem;
+    text-decoration: none;
   }
 </style>

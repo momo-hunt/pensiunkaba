@@ -12,7 +12,7 @@
   --bg-4: hsl(40, 75%, 60%);
   --bg-5: hsl(40, 75%, 50%);
 
-  --dark: hsl(40, 75%, 25%);
+  --dark: hsl(40, 75%, 15%);
 
   --primary: hsl(40, 75%, 50%);
 }
@@ -20,5 +20,6 @@
 body {
   font-family: sans-serif;
   background-color: var(--bg);
+  color: var(--dark);
   font-size: 20px;
 }

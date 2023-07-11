@@ -7,7 +7,7 @@
   function validated() {
     if (nikLength != 16) {
       error = true;
-      errMessage = "Jumlah harus NIK 16 nomor!";
+      errMessage = "Jumlah harus 16 nomor!";
     }
 
     if (nikLength == 16) {

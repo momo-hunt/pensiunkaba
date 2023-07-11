@@ -1,11 +1,5 @@
-export const load = async ({ locals, params }) => {
-  const getData = async () => {
-    const { nik } = params;
-    return await locals.db.collection("pensiun").read({ filter: { nik } });
-  };
-
+export const load = async ({ params }) => {
   return {
-    pensiun: getData(),
     nik: params.nik,
   };
 };

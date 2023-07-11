@@ -1,16 +1,27 @@
 <script>
-  import CoHeader from "../../../lib/ui/co/co-header.svelte";
+  import CoHeader from "$lib/ui/co/co-header.svelte";
+  import ElSpin from "../../../lib/ui/el/el-spin.svelte";
   import UiDetail from "./ui-detail.svelte";
 
   export let data;
+
+  async function loadData() {
+    if (!data?.nik) return;
+    const res = await fetch(`/api/pensiun/${data?.nik}`);
+    return await res.json();
+  }
+
+  let promise = loadData();
   let nik = data?.nik;
 </script>
 
 <CoHeader />
 <h2>Data Pensiun</h2>
 
-{#await data?.pensiun}
-  <p>loading</p>
+{#await promise}
+  <div class="loading">
+    <ElSpin text="Memuat data.." />
+  </div>
 {:then data}
   {#if data?.results.length == 0}
     <article>
@@ -29,6 +40,10 @@
 {/await}
 
 <style>
+  .loading {
+    padding: 1rem;
+  }
+
   h2 {
     padding: 1rem;
   }
